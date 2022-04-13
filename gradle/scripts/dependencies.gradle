@@ -1,0 +1,104 @@
+/*
+ * This file is part of Applied Energistics 2.
+ * Copyright (c) 2013 - 2014, AlgorithmX2, All rights reserved.
+ *
+ * Applied Energistics 2 is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Applied Energistics 2 is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
+ */
+
+repositories {
+    mavenLocal()
+
+    maven {
+        name "Mobius"
+        url "http://mobiusstrip.eu/maven"
+    }
+
+    maven {
+        name = "JEI repo"
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+
+    maven {
+        name = "Tesla repo"
+        url "https://modmaven.dev"
+    }
+
+    maven {
+        name = "IC2 repo"
+        url = "https://modmaven.dev"
+    }
+
+    maven {
+        name = "CoFH Maven"
+        url = "http://maven.covers1624.net"
+    }
+
+    maven { // TheOneProbe
+        name 'tterrag maven'
+        url "http://maven.tterrag.com/"
+    }
+
+    maven { // McJtyLib
+        name 'mcjty'
+        url "http://maven.k-4u.nl/"
+    }
+
+    maven { // Hwyla
+        name 'tehnut'
+        url "https://cursemaven.com"
+    }
+
+   	maven { // CraftTweaker
+        name 'jared maven'
+        url "http://maven.blamejared.com/"
+    }
+
+    //maven { // modmaven, maven proxy
+    //    name 'modmaven'
+    //    url "https://modmaven.k-4u.nl/"
+    //}
+
+    maven {
+		name = "CurseForge"
+		url = "https://minecraft.curseforge.com/api/maven/"
+	}
+}
+
+configurations {
+    mods
+}
+
+dependencies {
+    // installable runtime dependencies
+    mods "mcp.mobius.waila:Hwyla:${hwyla_version}"
+    mods "net.industrial-craft:industrialcraft-2:${ic2_version}:dev"
+    mods "mcjty.theoneprobe:TheOneProbe-${minecraft_version}:${top_version}"
+
+    // compile against provided APIs
+    compileOnly "mezz.jei:jei_${minecraft_version}:${jei_version}:api"
+    compileOnly "curse.maven:Hwyla-253449:2568751"
+    compileOnly "net.darkhax.tesla:Tesla-1.12.2:${tesla_version}"
+    compileOnly "net.industrial-craft:industrialcraft-2:${ic2_version}:api"
+    compileOnly "mcjty.theoneprobe:TheOneProbe-1.12:${top_version}:api"
+    compileOnly "cofh:CoFHCore:${cofhcore_version}:deobf"
+    compileOnly "CraftTweaker2:CraftTweaker2-API:${crafttweaker_version}"
+	compileOnly "curse.maven:InventoryTweaks-223094:2482482"
+    compileOnly "team.chisel.ctm:CTM:${ctm_version}"
+
+    // at runtime, use the full JEI jar
+    runtime "mezz.jei:jei_${minecraft_version}:${jei_version}"
+
+    // unit test dependencies
+    testCompile "junit:junit:4.12"
+}
